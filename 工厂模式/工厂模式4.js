@@ -7,7 +7,7 @@ function People(name) {
 }
 
 const xh = new People("小红");
-console.log(xh);
-
 const xm = People("小明");
+
+console.log(xh);
 console.log(xm);
