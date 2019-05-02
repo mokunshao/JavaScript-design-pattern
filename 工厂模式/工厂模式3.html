@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="create">
+      <div>
+        <span>姓名：</span>
+        <input type="text" name="name" />
+      </div>
+      <div>
+        <span>专业：</span>
+        <select name="type">
+          <option value="文科">文科</option>
+          <option value="理科">理科</option>
+        </select>
+      </div>
+      <div>
+        <button>提交</button>
+      </div>
+    </form>
+    <script>
+      init();
+      function init() {
+        const form = document.querySelector("#create");
+        form.addEventListener("submit", e => {
+          e.preventDefault();
+          const name = document.querySelector("[name=name]").value;
+          const type = document.querySelector("[name=type]").value;
+          const student = factory(name, type);
+          console.log(student);
+          form.reset()
+        });
+      }
+      class Student {
+        constructor(name, courses) {
+          this.name = name;
+          this.courses = courses;
+        }
+      }
+
+      function factory(name, type) {
+        switch (type) {
+          case "文科":
+            return new Student(name, ["政治", "历史", "地理"]);
+          case "理科":
+            return new Student(name, ["生物", "物理", "化学"]);
+          default:
+            throw "没有这个专业，别瞎填";
+        }
+      }
+    </script>
+  </body>
+</html>
