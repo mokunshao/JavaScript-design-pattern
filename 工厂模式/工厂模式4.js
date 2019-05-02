@@ -6,5 +6,8 @@ function People(name) {
   }
 }
 
-const xm = People('小明');
-console.log(xm)
+const xh = new People("小红");
+console.log(xh);
+
+const xm = People("小明");
+console.log(xm);
